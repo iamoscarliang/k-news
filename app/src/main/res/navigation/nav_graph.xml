@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/breakingNewsFragment">
+
+    <fragment
+        android:id="@+id/breakingNewsFragment"
+        android:name="com.oscarliang.knews.ui.breakingnews.BreakingNewsFragment"
+        android:label="BreakingNewsFragment"
+        tool:layout="@layout/fragment_breaking_news" />
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.oscarliang.knews.ui.search.SearchFragment"
+        android:label="SearchFragment"
+        tool:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/bookmarksFragment"
+        android:name="com.oscarliang.knews.ui.bookmarks.BookmarksFragment"
+        android:label="BookmarksFragment"
+        tool:layout="@layout/fragment_bookmarks" />
+
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.oscarliang.knews.ui.newsdetail.NewsDetailFragment"
+        android:label="NewsDetailFragment"
+        tool:layout="@layout/fragment_news_detail">
+
+        <argument
+            android:name="newsId"
+            app:argType="integer" />
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_to_newsDetailFragment"
+        app:destination="@id/newsDetailFragment"
+        app:enterAnim="@anim/slide_in"
+        app:exitAnim="@anim/fade_out"
+        app:popEnterAnim="@anim/fade_in"
+        app:popExitAnim="@anim/slide_out" />
+
+</navigation>

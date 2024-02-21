@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.lifecycle.LiveData" />
+
+        <import type="com.oscarliang.knews.model.News" />
+
+        <variable
+            name="news"
+            type="LiveData&lt;News>" />
+
+        <variable
+            name="viewModel"
+            type="com.oscarliang.knews.ui.newsdetail.NewsDetailViewModel" />
+
+        <variable
+            name="listener"
+            type="com.oscarliang.knews.ui.common.BackListener" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:collapsedTitleTextAppearance="@style/CollapsedToolBar"
+                app:contentScrim="@color/purple_500"
+                app:expandedTitleTextAppearance="@style/ExpandedToolBar"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:maxLines="3"
+                app:title="@{news.title}">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/image_news_height"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{news.image}"
+                    app:layout_collapseMode="parallax" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/image_news_height"
+                    android:background="@drawable/color_gradient" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:collapseIcon="@drawable/ic_back"
+                    app:layout_collapseMode="pin"
+                    app:navigationIcon="@drawable/ic_back"
+                    app:navigationOnClickListener="@{() -> listener.back()}" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_round_rect"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/text_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_20"
+                    android:text="@{news.author}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tool:text="News author" />
+
+                <TextView
+                    android:id="@+id/text_publish_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{news.publishDate.length() >= 16 ? news.publishDate.substring(0, 16) : news.publishDate}"
+                    android:textColor="@color/gray_700"
+                    android:textSize="@dimen/text_size_15"
+                    app:layout_constraintStart_toStartOf="@id/text_author"
+                    app:layout_constraintTop_toBottomOf="@id/text_author"
+                    tool:text="yyyy-MM-dd HH:mm" />
+
+                <TextView
+                    android:id="@+id/text_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_20"
+                    android:lineSpacingExtra="@dimen/margin_5"
+                    android:text="@{news.text}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_15"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_publish_date"
+                    tool:text="News content more content more content more content more content" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_20"
+            android:backgroundTint="@{news.bookmark ? @color/purple_500 : @color/gray_500}"
+            android:elevation="@dimen/margin_20"
+            android:onClick="@{() -> viewModel.toggleBookmark(news)}"
+            android:src="@{news.bookmark ? @drawable/ic_bookmark : @drawable/ic_bookmark_border}"
+            app:borderWidth="0dp"
+            app:layout_anchor="@id/appbar"
+            app:layout_anchorGravity="right|bottom"
+            app:tint="@color/white"
+            tool:backgroundTint="@color/purple_200"
+            tool:src="@drawable/ic_bookmark_border" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

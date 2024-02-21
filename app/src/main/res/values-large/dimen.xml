@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_news_item_height">375</dimen>
+    <dimen name="image_news_item_height">240dp</dimen>
+    <dimen name="image_news_height">525dp</dimen>
+    <dimen name="btn_bookmark_width">75dp</dimen>
+
+    <dimen name="text_size_12">18sp</dimen>
+    <dimen name="text_size_15">22.5sp</dimen>
+    <dimen name="text_size_18">27sp</dimen>
+    <dimen name="text_size_20">30sp</dimen>
+
+    <dimen name="margin_5">7.5dp</dimen>
+    <dimen name="margin_10">15dp</dimen>
+    <dimen name="margin_20">30dp</dimen>
+    <dimen name="margin_30">45dp</dimen>
+</resources>
