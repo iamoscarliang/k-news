@@ -1,6 +1,7 @@
 <div align="center">
 <img src="https://github.com/iamoscarliang/k-news/blob/master/screenshot/knews.png" width="600">
-  
+
+[![Build](https://github.com/iamoscarliang/k-news/workflows/Build/badge.svg)](https://github.com/iamoscarliang/k-news/actions)
 ![minSdk](https://img.shields.io/badge/minSdk-21-brightgreen)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen)](https://github.com/iamoscarliang/k-news/blob/master/LICENSE)
 
