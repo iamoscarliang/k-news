@@ -8,6 +8,8 @@
 **News app made with [World News API](https://worldnewsapi.com/)**
 </div>
 
+---
+
 ## :pushpin: Features
 Breaking news              | Search                    |  Bookmarks           
 :-------------------------:|:-------------------------:|:-------------------------:
